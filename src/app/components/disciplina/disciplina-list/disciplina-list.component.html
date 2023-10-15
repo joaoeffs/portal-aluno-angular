@@ -1,0 +1,17 @@
+<mat-table [dataSource]="disciplina" class="mat-elevation-z8">
+
+  <!-- Nome Column -->
+  <ng-container matColumnDef="nome">
+    <mat-header-cell *matHeaderCellDef> Disciplina </mat-header-cell>
+    <mat-cell *matCellDef="let disciplina"> {{disciplina.nome}} </mat-cell>
+  </ng-container>
+
+  <!-- Codigo Column -->
+  <ng-container matColumnDef="codigo">
+    <mat-header-cell *matHeaderCellDef> Código </mat-header-cell>
+    <mat-cell *matCellDef="let disciplina"> {{disciplina.codigo}} </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>

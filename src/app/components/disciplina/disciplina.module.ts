@@ -14,12 +14,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { DisciplinaListComponent } from './disciplina-list/disciplina-list.component';
 
 
 @NgModule({
   declarations: [
     DisciplinaComponent,
     DisciplinaFormComponent,
+    DisciplinaListComponent,
   ],
   imports: [
     CommonModule,

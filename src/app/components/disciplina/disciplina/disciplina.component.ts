@@ -14,7 +14,6 @@ import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/err
 export class DisciplinaComponent implements OnInit {
 
   disciplina$: Observable<Disciplina[]>;
-  displayedColumns = ['nome', 'codigo'];
 
   constructor(
     private disciplinaService: DisciplinaService,
