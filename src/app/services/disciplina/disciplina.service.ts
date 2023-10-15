@@ -18,4 +18,8 @@ export class DisciplinaService {
       first()
     )
   }
+
+  save(disciplina: Partial<Disciplina>) {
+    return this.httpClient.post<Disciplina>(this.API, disciplina);
+  }
 }

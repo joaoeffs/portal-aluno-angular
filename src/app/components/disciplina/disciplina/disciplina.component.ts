@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, catchError, of } from 'rxjs';
 import { Disciplina } from 'src/app/interfaces/disciplina/disciplina';
 import { DisciplinaService } from 'src/app/services/disciplina/disciplina.service';
@@ -17,7 +18,9 @@ export class DisciplinaComponent implements OnInit {
 
   constructor(
     private disciplinaService: DisciplinaService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private router: Router,
+    private route: ActivatedRoute
   ) {
     this.disciplina$ = this.disciplinaService.list()
     .pipe(
@@ -32,6 +35,10 @@ export class DisciplinaComponent implements OnInit {
     this.dialog.open(ErrorDialogComponent, {
       data: errorMsg
     });
+  }
+
+  onAdd() {
+    this.router.navigate(['novo'], { relativeTo: this.route })
   }
 
   ngOnInit(): void {
