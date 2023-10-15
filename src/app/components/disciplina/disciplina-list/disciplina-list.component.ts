@@ -10,6 +10,14 @@ export class DisciplinaListComponent {
 
   @Input() disciplina : Disciplina[] = [];
 
-  readonly displayedColumns = ['nome', 'codigo'];
+  readonly displayedColumns = ['actions', 'nome', 'codigo'];
+
+  onEdit(disciplina: Disciplina) {
+    //this.edit.emit(disciplina);
+  }
+
+  onRemove(disciplina: Disciplina) {
+    //this.remove.emit(disciplina)
+  }
 
 }
