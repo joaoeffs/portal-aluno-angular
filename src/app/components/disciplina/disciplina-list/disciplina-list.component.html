@@ -1,0 +1,43 @@
+<mat-table [dataSource]="disciplina" class="mat-elevation-z8">
+
+  <!-- Actions Column-->
+  <ng-container matColumnDef="actions">
+    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+
+    <mat-cell *matCellDef="let disciplina">
+      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button
+          mat-menu-item
+          (click)="onEdit(disciplina)"
+        >
+          <span>Editar</span>
+        </button>
+        <button
+          mat-menu-item
+          (click)="onRemove(disciplina)"
+        >
+          <span>Remover</span>
+        </button>
+      </mat-menu>
+
+    </mat-cell>
+  </ng-container>
+
+  <!-- Nome Column -->
+  <ng-container matColumnDef="nome">
+    <mat-header-cell *matHeaderCellDef> Disciplina </mat-header-cell>
+    <mat-cell *matCellDef="let disciplina"> {{disciplina.nome}} </mat-cell>
+  </ng-container>
+
+  <!-- Codigo Column -->
+  <ng-container matColumnDef="codigo">
+    <mat-header-cell *matHeaderCellDef> Código </mat-header-cell>
+    <mat-cell *matCellDef="let disciplina"> {{disciplina.codigo}} </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>

@@ -5,31 +5,18 @@
 
     <mat-card class="new-disciplina">
       <mat-card-content >
-        <button mat-raised-button>
-          <mat-icon (click)="onAdd()">add</mat-icon>
+        <button mat-raised-button (click)="onAdd()">
+          <mat-icon>add</mat-icon>
+          Nova Disciplina
         </button>
       </mat-card-content>
     </mat-card>
 
-    <div *ngIf="disciplina$ | async as disciplina; else loading">
-      <table mat-table [dataSource]="disciplina" class="mat-elevation-z8">
-
-        <!-- Nome Column -->
-        <ng-container matColumnDef="nome">
-          <th mat-header-cell *matHeaderCellDef> Disciplina </th>
-          <td mat-cell *matCellDef="let disciplina"> {{disciplina.nome}} </td>
-        </ng-container>
-
-        <!-- Codigo Column -->
-        <ng-container matColumnDef="codigo">
-          <th mat-header-cell *matHeaderCellDef> Código </th>
-          <td mat-cell *matCellDef="let disciplina"> {{disciplina.codigo}} </td>
-        </ng-container>
-
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      </table>
-    </div>
+    <app-disciplina-list
+      *ngIf="disciplina$ | async as disciplina; else loading"
+      [disciplina]="disciplina"
+      (add)="onAdd()"
+    ></app-disciplina-list>
 
     <ng-template #loading>
       <div class="loading-spinner">
