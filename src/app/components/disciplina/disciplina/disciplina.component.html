@@ -16,6 +16,7 @@
       *ngIf="disciplina$ | async as disciplina; else loading"
       [disciplina]="disciplina"
       (add)="onAdd()"
+      (edit)="onEdit($event)"
     ></app-disciplina-list>
 
     <ng-template #loading>

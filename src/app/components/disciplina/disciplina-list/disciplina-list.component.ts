@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Disciplina } from 'src/app/interfaces/disciplina/disciplina';
 
 @Component({
@@ -9,11 +9,12 @@ import { Disciplina } from 'src/app/interfaces/disciplina/disciplina';
 export class DisciplinaListComponent {
 
   @Input() disciplina : Disciplina[] = [];
+  @Output() edit = new EventEmitter(false);
 
   readonly displayedColumns = ['actions', 'nome', 'codigo'];
 
   onEdit(disciplina: Disciplina) {
-    //this.edit.emit(disciplina);
+    this.edit.emit(disciplina);
   }
 
   onRemove(disciplina: Disciplina) {
