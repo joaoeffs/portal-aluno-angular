@@ -15,6 +15,7 @@
     <app-disciplina-list
       *ngIf="disciplina$ | async as disciplina; else loading"
       [disciplina]="disciplina"
+      (add)="onAdd()"
     ></app-disciplina-list>
 
     <ng-template #loading>

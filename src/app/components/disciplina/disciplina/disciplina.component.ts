@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, catchError, of } from 'rxjs';
 import { Disciplina } from 'src/app/interfaces/disciplina/disciplina';
 import { DisciplinaService } from 'src/app/services/disciplina/disciplina.service';
@@ -13,13 +12,13 @@ import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/err
 })
 export class DisciplinaComponent implements OnInit {
 
+  @Output() add = new EventEmitter(false);
+
   disciplina$: Observable<Disciplina[]>;
 
   constructor(
     private disciplinaService: DisciplinaService,
-    public dialog: MatDialog,
-    private router: Router,
-    private route: ActivatedRoute
+    public dialog: MatDialog
   ) {
     this.disciplina$ = this.disciplinaService.list()
     .pipe(
@@ -37,7 +36,7 @@ export class DisciplinaComponent implements OnInit {
   }
 
   onAdd() {
-    this.router.navigate(['novo'], { relativeTo: this.route })
+    this.add.emit(true);
   }
 
   ngOnInit(): void {
