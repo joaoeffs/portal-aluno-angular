@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, catchError, of } from 'rxjs';
 import { Disciplina } from 'src/app/interfaces/disciplina/disciplina';
@@ -15,14 +16,19 @@ export class DisciplinaComponent implements OnInit {
 
   @Output() add = new EventEmitter(false);
 
-  disciplina$: Observable<Disciplina[]>;
+  disciplina$: Observable<Disciplina[]> | null = null;
 
   constructor(
     private disciplinaService: DisciplinaService,
     public dialog: MatDialog,
     private router: Router,
     private route: ActivatedRoute,
+    private snackBar: MatSnackBar,
   ) {
+    this.refresh();
+  }
+
+  refresh() {
     this.disciplina$ = this.disciplinaService.list()
     .pipe(
       catchError(error => {
@@ -44,6 +50,18 @@ export class DisciplinaComponent implements OnInit {
 
   onEdit(disciplina: Disciplina) {
     this.router.navigate(['editar', disciplina.id], { relativeTo: this.route })
+  }
+
+  onRemove(disciplina: Disciplina) {
+    if (disciplina.id !== null) {
+      this.disciplinaService.remove(disciplina.id).subscribe(
+        () => {
+          this.refresh()
+          this.snackBar.open('Disciplina removida com sucesso!', '', { duration: 5000 });
+        },
+        error => this.onError('Erro ao tentar remover curso'),
+      )
+    }
   }
 
   ngOnInit(): void {

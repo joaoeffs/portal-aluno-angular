@@ -10,6 +10,7 @@ export class DisciplinaListComponent {
 
   @Input() disciplina : Disciplina[] = [];
   @Output() edit = new EventEmitter(false);
+  @Output() remove = new EventEmitter(false);
 
   readonly displayedColumns = ['actions', 'nome', 'codigo'];
 
@@ -18,7 +19,7 @@ export class DisciplinaListComponent {
   }
 
   onRemove(disciplina: Disciplina) {
-    //this.remove.emit(disciplina)
+    this.remove.emit(disciplina)
   }
 
 }

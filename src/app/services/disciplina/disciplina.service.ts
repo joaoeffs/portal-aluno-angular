@@ -24,6 +24,7 @@ export class DisciplinaService {
   }
 
   save(disciplina: Partial<Disciplina>) {
+
     if (disciplina.id) {
       return this.update(disciplina);
     }
@@ -32,10 +33,13 @@ export class DisciplinaService {
 
   private create(disciplina: Partial<Disciplina>) {
     return this.httpClient.post<Disciplina>(this.API, disciplina);
-
   }
 
   private update(disciplina: Partial<Disciplina>) {
     return this.httpClient.put<Disciplina>(`${this.API}/${disciplina.id}`, disciplina);
+  }
+
+  remove(id: string) {
+    return this.httpClient.delete(`${this.API}/${id}`);
   }
 }
