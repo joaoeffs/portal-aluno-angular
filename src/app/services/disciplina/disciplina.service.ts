@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Disciplina } from 'src/app/interfaces/disciplina/disciplina';
+import { Disciplina, ListagemDisciplina } from 'src/app/interfaces/disciplina/disciplina';
 import { HttpClient } from '@angular/common/http'
 import { delay, first } from 'rxjs';
 
@@ -13,7 +13,7 @@ export class DisciplinaService {
   constructor(private httpClient: HttpClient) { }
 
   list() {
-    return this.httpClient.get<Disciplina[]>(this.API)
+    return this.httpClient.get<ListagemDisciplina[]>(this.API)
     .pipe(
       first()
     )
