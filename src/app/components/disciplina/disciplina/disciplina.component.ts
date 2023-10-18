@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, catchError, of } from 'rxjs';
-import { Disciplina } from 'src/app/interfaces/disciplina/disciplina';
+import { Disciplina, ListagemDisciplina } from 'src/app/interfaces/disciplina/disciplina';
 import { DisciplinaService } from 'src/app/services/disciplina/disciplina.service';
 import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';
 
@@ -16,7 +16,7 @@ export class DisciplinaComponent implements OnInit {
 
   @Output() add = new EventEmitter(false);
 
-  disciplina$: Observable<Disciplina[]> | null = null;
+  disciplina$: Observable<ListagemDisciplina[]> | null = null;
 
   constructor(
     private disciplinaService: DisciplinaService,

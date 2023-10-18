@@ -5,6 +5,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { DisciplinaService } from 'src/app/services/disciplina/disciplina.service';
 import { ActivatedRoute } from '@angular/router';
 import { Disciplina } from 'src/app/interfaces/disciplina/disciplina';
+import { ProfessorService } from 'src/app/services/professor/professor.service';
+import { Professor } from 'src/app/interfaces/professor/professor';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-disciplina-form',
@@ -16,12 +19,16 @@ export class DisciplinaFormComponent implements OnInit {
   form = this.formBuilder.group({
     id: [''],
     nome: new FormControl('', { nonNullable: true }),
-    codigo: new FormControl('', { nonNullable: true })
+    codigo: new FormControl('', { nonNullable: true }),
+    professor: new FormControl('', { nonNullable: true }),
   });
+
+  professores: Observable<Professor[]> | undefined;
 
   constructor(
     private formBuilder: FormBuilder,
     private service: DisciplinaService,
+    private professorService: ProfessorService,
     private snackBar: MatSnackBar,
     private location: Location,
     private route: ActivatedRoute
@@ -32,8 +39,11 @@ export class DisciplinaFormComponent implements OnInit {
     this.form.setValue({
       id: disciplina.id,
       nome: disciplina.nome,
-      codigo: disciplina.codigo
+      codigo: disciplina.codigo,
+      professor: disciplina.professor
     })
+
+    this.professores = this.professorService.getProfessor();
    }
 
   onSubmit() {

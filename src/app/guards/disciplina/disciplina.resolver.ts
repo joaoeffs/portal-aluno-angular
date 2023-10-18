@@ -11,5 +11,5 @@ export const disciplinaResolver: ResolveFn<Observable<Disciplina>> = (route, sta
     return service.loadById(route.params['id']);
   }
 
-  return of ({ id:'', nome:'', codigo:'' });
+  return of ({ id:'', nome:'', codigo:'' , professor: ''});
 };
