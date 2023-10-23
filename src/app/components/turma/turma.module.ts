@@ -17,13 +17,17 @@ import { TurmaRoutingModule } from './turma-routing.module';
 import { TurmaComponent } from './turma/turma.component';
 import { TurmaListComponent } from './turma-list/turma-list.component';
 import { TurmaFormComponent } from './turma-form/turma-form.component';
+import { TurmaDisciplinaComponent } from './turma-disciplina/turma-disciplina.component';
+import { TurmaDisciplinaListComponent } from './turma-disciplina-list/turma-disciplina-list.component';
 
 
 @NgModule({
   declarations: [
     TurmaComponent,
     TurmaListComponent,
-    TurmaFormComponent
+    TurmaFormComponent,
+    TurmaDisciplinaComponent,
+    TurmaDisciplinaListComponent
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,37 @@
+<mat-table [dataSource]="turmaDisciplina" class="mat-elevation-z8">
+
+    <!-- Actions Column-->
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+
+      <mat-cell *matCellDef="let turma">
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button
+            mat-menu-item
+            (click)="onRemove(turma)"
+          >
+            <span>Desvincular Disciplina</span>
+          </button>
+        </mat-menu>
+
+      </mat-cell>
+    </ng-container>
+
+  <!-- Nome Column -->
+  <ng-container matColumnDef="nome">
+    <mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
+    <mat-cell *matCellDef="let turmaDisciplina"> {{turmaDisciplina.disciplina.nome}} </mat-cell>
+  </ng-container>
+
+  <!-- Codigo Column -->
+  <ng-container matColumnDef="professor">
+    <mat-header-cell *matHeaderCellDef> Professor </mat-header-cell>
+    <mat-cell *matCellDef="let turmaDisciplina"> {{turmaDisciplina.disciplina.professor.nome}} </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>

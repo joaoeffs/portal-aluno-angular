@@ -15,3 +15,8 @@ export interface ListagemDisciplina {
     sobrenome: string;
   }
 }
+
+export interface DisciplinaVincular {
+  id: string;
+  nome: string;
+}
