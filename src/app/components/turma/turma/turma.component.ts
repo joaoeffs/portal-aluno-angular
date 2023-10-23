@@ -64,6 +64,10 @@ export class TurmaComponent implements OnInit {
     }
   }
 
+  onVincularDisciplina(turma: Turma) {
+    this.router.navigate([turma.id, 'vincular-disciplina'], { relativeTo: this.route })
+  }
+
   ngOnInit(): void {
 
   }
