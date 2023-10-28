@@ -16,6 +16,10 @@ const routes: Routes = [
   {
     path: 'turma',
     loadChildren: () => import('./components/turma/turma.module').then(m => m.TurmaModule)
+  },
+  {
+    path: 'aluno',
+    loadChildren: () => import('./components/aluno/aluno.module').then(m => m.AlunoModule)
   }
 ];
 
