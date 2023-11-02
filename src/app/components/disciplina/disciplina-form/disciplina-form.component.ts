@@ -6,8 +6,6 @@ import { DisciplinaService } from 'src/app/services/disciplina/disciplina.servic
 import { ActivatedRoute } from '@angular/router';
 import { Disciplina } from 'src/app/interfaces/disciplina/disciplina';
 import { ProfessorService } from 'src/app/services/professor/professor.service';
-import { Professor } from 'src/app/interfaces/professor/professor';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-disciplina-form',
@@ -20,10 +18,7 @@ export class DisciplinaFormComponent implements OnInit {
     id: [''],
     nome: new FormControl('', { nonNullable: true }),
     codigo: new FormControl('', { nonNullable: true }),
-    professor: new FormControl('', { nonNullable: true }),
   });
-
-  professores: Observable<Professor[]> | undefined;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -39,11 +34,8 @@ export class DisciplinaFormComponent implements OnInit {
     this.form.setValue({
       id: disciplina.id,
       nome: disciplina.nome,
-      codigo: disciplina.codigo,
-      professor: disciplina.professor
+      codigo: disciplina.codigo
     })
-
-    this.professores = this.professorService.getProfessor();
    }
 
   onSubmit() {

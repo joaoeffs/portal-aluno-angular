@@ -21,6 +21,12 @@
         >
           <span>Remover</span>
         </button>
+        <button
+          mat-menu-item
+          (click)="onVincularAluno(disciplina)"
+        >
+          <span>Vincular Aluno</span>
+        </button>
       </mat-menu>
 
     </mat-cell>
@@ -36,11 +42,6 @@
   <ng-container matColumnDef="codigo">
     <mat-header-cell *matHeaderCellDef> Código </mat-header-cell>
     <mat-cell *matCellDef="let disciplina"> {{disciplina.codigo}} </mat-cell>
-  </ng-container>
-
-  <ng-container matColumnDef="professor">
-    <mat-header-cell *matHeaderCellDef> Professor </mat-header-cell>
-    <mat-cell *matCellDef="let disciplina"> {{disciplina.professor.nome}} </mat-cell>
   </ng-container>
 
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
