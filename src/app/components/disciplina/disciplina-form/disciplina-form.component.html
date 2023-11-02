@@ -12,13 +12,6 @@
       <mat-form-field class="full-width">
         <input matInput placeholder="Código" formControlName="codigo">
       </mat-form-field>
-
-    <mat-form-field class="full-width">
-      <mat-label>Professor</mat-label>
-      <select matNativeControl formControlName="professor">
-        <option *ngFor="let professor of professores | async" [value]="professor.id">{{ professor.nome }}</option>
-      </select>
-    </mat-form-field>
   </form>
 
     <mat-card-actions align="end">

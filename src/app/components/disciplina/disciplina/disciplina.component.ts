@@ -64,6 +64,10 @@ export class DisciplinaComponent implements OnInit {
     }
   }
 
+  onVincularAluno(disciplina: Disciplina) {
+    this.router.navigate([disciplina.id, 'vincular-aluno'], { relativeTo: this.route })
+  }
+
   ngOnInit(): void {
 
   }

@@ -12,10 +12,6 @@ const routes: Routes = [
   {
     path: 'disciplina',
     loadChildren: () => import('./components/disciplina/disciplina.module').then(m => m.DisciplinaModule)
-  },
-  {
-    path: 'turma',
-    loadChildren: () => import('./components/turma/turma.module').then(m => m.TurmaModule)
   }
 ];
 

@@ -11,8 +11,9 @@ export class DisciplinaListComponent {
   @Input() disciplina : ListagemDisciplina[] = [];
   @Output() edit = new EventEmitter(false);
   @Output() remove = new EventEmitter(false);
+  @Output() vincularAluno = new EventEmitter(false);
 
-  readonly displayedColumns = ['actions', 'nome', 'codigo', 'professor'];
+  readonly displayedColumns = ['actions', 'nome', 'codigo'];
 
   onEdit(disciplina: Disciplina) {
     this.edit.emit(disciplina);
@@ -20,6 +21,10 @@ export class DisciplinaListComponent {
 
   onRemove(disciplina: Disciplina) {
     this.remove.emit(disciplina)
+  }
+
+  onVincularAluno(disciplina: Disciplina) {
+    this.vincularAluno.emit(disciplina);
   }
 
 }

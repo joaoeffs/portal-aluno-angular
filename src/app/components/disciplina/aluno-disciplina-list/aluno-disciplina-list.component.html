@@ -1,0 +1,43 @@
+<mat-table [dataSource]="alunoDisciplina" class="mat-elevation-z8">
+
+  <!-- Actions Column-->
+  <ng-container matColumnDef="actions">
+    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+
+    <mat-cell *matCellDef="let turma">
+      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button
+          mat-menu-item
+          (click)="onRemove(turma)"
+        >
+          <span>Remover Aluno</span>
+        </button>
+      </mat-menu>
+
+    </mat-cell>
+  </ng-container>
+
+<!-- Nome Column -->
+<ng-container matColumnDef="nome">
+  <mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
+  <mat-cell *matCellDef="let alunoDisciplina"> {{alunoDisciplina.aluno.nome}} </mat-cell>
+</ng-container>
+
+<!-- Sobrenome Column -->
+<ng-container matColumnDef="sobrenome">
+  <mat-header-cell *matHeaderCellDef> Sobrenome </mat-header-cell>
+  <mat-cell *matCellDef="let alunoDisciplina"> {{alunoDisciplina.aluno.sobrenome}} </mat-cell>
+</ng-container>
+
+<!-- Matricula Column -->
+<ng-container matColumnDef="matricula">
+  <mat-header-cell *matHeaderCellDef> Matricula </mat-header-cell>
+  <mat-cell *matCellDef="let alunoDisciplina"> {{alunoDisciplina.aluno.matricula}} </mat-cell>
+</ng-container>
+
+<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>

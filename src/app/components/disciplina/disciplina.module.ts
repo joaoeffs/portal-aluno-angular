@@ -16,6 +16,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { DisciplinaListComponent } from './disciplina-list/disciplina-list.component';
 import { MatMenuModule } from '@angular/material/menu';
+import { AlunoDisciplinaComponent } from './aluno-disciplina/aluno-disciplina.component';
+import { AlunoDisciplinaListComponent } from './aluno-disciplina-list/aluno-disciplina-list.component';
 
 
 @NgModule({
@@ -23,6 +25,8 @@ import { MatMenuModule } from '@angular/material/menu';
     DisciplinaComponent,
     DisciplinaFormComponent,
     DisciplinaListComponent,
+    AlunoDisciplinaComponent,
+    AlunoDisciplinaListComponent,
   ],
   imports: [
     CommonModule,

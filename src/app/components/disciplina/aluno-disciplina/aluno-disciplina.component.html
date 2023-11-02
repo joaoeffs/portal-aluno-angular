@@ -1,13 +1,13 @@
 <mat-card>
   <mat-card-content>
 
-    <mat-toolbar color="primary">Vincular Disciplina</mat-toolbar>
+    <mat-toolbar color="primary">Vincular Aluno</mat-toolbar>
 
     <form [formGroup]="form" class="min-width">
       <mat-form-field class="full-width">
-        <mat-label>Disciplina</mat-label>
-        <select matNativeControl formControlName="disciplina">
-          <option *ngFor="let disciplina of disciplinas | async" [value]="disciplina.id">{{ disciplina.nome }}</option>
+        <mat-label>Aluno</mat-label>
+        <select matNativeControl formControlName="aluno">
+          <option *ngFor="let aluno of alunos | async" [value]="aluno.id">{{ aluno.nome }}</option>
         </select>
       </mat-form-field>
     </form>
@@ -23,13 +23,13 @@
 <mat-card>
   <mat-card-content>
 
-    <mat-toolbar color="primary">Lista de Disciplinas </mat-toolbar>
+    <mat-toolbar color="primary">Listagem de Alunos</mat-toolbar>
 
-    <app-turma-disciplina-list
-      *ngIf="turmaDisciplina$ | async as turmaDisciplina; else loading"
-      [turmaDisciplina]="turmaDisciplina"
+    <app-aluno-disciplina-list
+      *ngIf="alunoDisciplina$ | async as alunoDisciplina; else loading"
+      [alunoDisciplina]="alunoDisciplina"
       (remove)="onRemove($event)"
-    ></app-turma-disciplina-list>
+    ></app-aluno-disciplina-list>
 
     <ng-template #loading>
       <div class="loading-spinner">
