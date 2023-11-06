@@ -68,6 +68,10 @@ export class DisciplinaComponent implements OnInit {
     this.router.navigate([disciplina.id, 'vincular-aluno'], { relativeTo: this.route })
   }
 
+  onRegistrarNota(disciplina: Disciplina) {
+    this.router.navigate([disciplina.id, 'registrar-nota'], { relativeTo: this.route })
+  }
+
   ngOnInit(): void {
 
   }

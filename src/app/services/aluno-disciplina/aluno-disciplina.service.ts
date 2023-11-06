@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Disciplina, ListagemDisciplina } from 'src/app/interfaces/disciplina/disciplina';
 import { HttpClient } from '@angular/common/http'
-import { delay, first } from 'rxjs';
 import { AlunoDisciplina } from 'src/app/interfaces/aluno-disciplina/aluno-disciplina';
 import { ListagemAlunos } from 'src/app/interfaces/aluno/aluno';
+import { ListagemNotas } from 'src/app/interfaces/notas/notas';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +15,10 @@ export class AlunoDisciplinaService {
 
   listById(id: string) {
     return this.httpClient.get<ListagemAlunos[]>(`${this.API}/${id}`);
+  }
+
+  listByDisciplinaId(id: string) {
+    return this.httpClient.get<ListagemNotas[]>(`${this.API}/${id}/listar-notas`);
   }
 
   save(alunodisciplina: Partial<AlunoDisciplina>) {

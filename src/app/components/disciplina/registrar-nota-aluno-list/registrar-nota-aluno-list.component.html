@@ -1,0 +1,58 @@
+<mat-table [dataSource]="notas" class="mat-elevation-z8">
+
+  <!-- Actions Column-->
+  <ng-container matColumnDef="actions">
+    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+
+    <mat-cell *matCellDef="let turma">
+      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button
+          mat-menu-item
+          (click)="onRegistrar(turma)"
+        >
+          <span>Registrar Nota</span>
+        </button>
+      </mat-menu>
+
+    </mat-cell>
+  </ng-container>
+
+<!-- Nome Column -->
+<ng-container matColumnDef="nome">
+  <mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
+  <mat-cell *matCellDef="let notas"> {{notas.nome}} </mat-cell>
+</ng-container>
+
+<!-- Sobrenome Column -->
+<ng-container matColumnDef="sobrenome">
+  <mat-header-cell *matHeaderCellDef> Sobrenome </mat-header-cell>
+  <mat-cell *matCellDef="let notas"> {{notas.sobrenome}} </mat-cell>
+</ng-container>
+
+<!-- Matricula Column -->
+<ng-container matColumnDef="matricula">
+  <mat-header-cell *matHeaderCellDef> Matricula </mat-header-cell>
+  <mat-cell *matCellDef="let notas"> {{notas.matricula}} </mat-cell>
+</ng-container>
+
+<ng-container matColumnDef="n1">
+  <mat-header-cell *matHeaderCellDef> Nota 1 </mat-header-cell>
+  <mat-cell *matCellDef="let notas"> {{notas.n1}} </mat-cell>
+</ng-container>
+
+<ng-container matColumnDef="n2">
+  <mat-header-cell *matHeaderCellDef> Nota 2 </mat-header-cell>
+  <mat-cell *matCellDef="let notas"> {{notas.n3}} </mat-cell>
+</ng-container>
+
+<ng-container matColumnDef="n3">
+  <mat-header-cell *matHeaderCellDef> Nota 3 </mat-header-cell>
+  <mat-cell *matCellDef="let notas"> {{notas.n3}} </mat-cell>
+</ng-container>
+
+<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
