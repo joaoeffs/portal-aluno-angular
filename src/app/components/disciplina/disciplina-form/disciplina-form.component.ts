@@ -5,7 +5,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { DisciplinaService } from 'src/app/services/disciplina/disciplina.service';
 import { ActivatedRoute } from '@angular/router';
 import { Disciplina } from 'src/app/interfaces/disciplina/disciplina';
-import { ProfessorService } from 'src/app/services/professor/professor.service';
 
 @Component({
   selector: 'app-disciplina-form',
@@ -23,7 +22,6 @@ export class DisciplinaFormComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private service: DisciplinaService,
-    private professorService: ProfessorService,
     private snackBar: MatSnackBar,
     private location: Location,
     private route: ActivatedRoute

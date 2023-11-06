@@ -18,6 +18,9 @@ import { DisciplinaListComponent } from './disciplina-list/disciplina-list.compo
 import { MatMenuModule } from '@angular/material/menu';
 import { AlunoDisciplinaComponent } from './aluno-disciplina/aluno-disciplina.component';
 import { AlunoDisciplinaListComponent } from './aluno-disciplina-list/aluno-disciplina-list.component';
+import { RegistrarNotaComponent } from './registrar-nota/registrar-nota.component';
+import { RegistrarNotaFormComponent } from './registrar-nota-form/registrar-nota-form.component';
+import { RegistrarNotaAlunoListComponent } from './registrar-nota-aluno-list/registrar-nota-aluno-list.component';
 
 
 @NgModule({
@@ -27,6 +30,9 @@ import { AlunoDisciplinaListComponent } from './aluno-disciplina-list/aluno-disc
     DisciplinaListComponent,
     AlunoDisciplinaComponent,
     AlunoDisciplinaListComponent,
+    RegistrarNotaComponent,
+    RegistrarNotaFormComponent,
+    RegistrarNotaAlunoListComponent,
   ],
   imports: [
     CommonModule,

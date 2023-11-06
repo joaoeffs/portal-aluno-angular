@@ -12,6 +12,7 @@ export class DisciplinaListComponent {
   @Output() edit = new EventEmitter(false);
   @Output() remove = new EventEmitter(false);
   @Output() vincularAluno = new EventEmitter(false);
+  @Output() registrarNota = new EventEmitter(false);
 
   readonly displayedColumns = ['actions', 'nome', 'codigo'];
 
@@ -25,6 +26,10 @@ export class DisciplinaListComponent {
 
   onVincularAluno(disciplina: Disciplina) {
     this.vincularAluno.emit(disciplina);
+  }
+
+  onRegistrarNota(disciplina: Disciplina) {
+    this.registrarNota.emit(disciplina);
   }
 
 }
