@@ -13,8 +13,20 @@
           mat-menu-item
           (click)="onRegistrar(turma)"
         >
-          <span>Registrar Nota</span>
+          <span>Registrar Nota 1</span>
         </button>
+        <button
+          mat-menu-item
+          (click)="onRegistrarNota2(turma)"
+        >
+          <span>Registrar Nota 2</span>
+        </button>
+        <button
+        mat-menu-item
+        (click)="onRegistrarNota3(turma)"
+      >
+        <span>Registrar Nota 3</span>
+      </button>
       </mat-menu>
 
     </mat-cell>
@@ -45,7 +57,7 @@
 
 <ng-container matColumnDef="n2">
   <mat-header-cell *matHeaderCellDef> Nota 2 </mat-header-cell>
-  <mat-cell *matCellDef="let notas"> {{notas.n3}} </mat-cell>
+  <mat-cell *matCellDef="let notas"> {{notas.n2}} </mat-cell>
 </ng-container>
 
 <ng-container matColumnDef="n3">

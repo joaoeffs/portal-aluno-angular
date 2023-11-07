@@ -21,6 +21,8 @@ import { AlunoDisciplinaListComponent } from './aluno-disciplina-list/aluno-disc
 import { RegistrarNotaComponent } from './registrar-nota/registrar-nota.component';
 import { RegistrarNotaFormComponent } from './registrar-nota-form/registrar-nota-form.component';
 import { RegistrarNotaAlunoListComponent } from './registrar-nota-aluno-list/registrar-nota-aluno-list.component';
+import { RegistrarNotaNota2FormComponent } from './registrar-nota-nota2-form/registrar-nota-nota2-form.component';
+import { RegistrarNotaNota3FormComponent } from './registrar-nota-nota3-form/registrar-nota-nota3-form.component';
 
 
 @NgModule({
@@ -33,6 +35,8 @@ import { RegistrarNotaAlunoListComponent } from './registrar-nota-aluno-list/reg
     RegistrarNotaComponent,
     RegistrarNotaFormComponent,
     RegistrarNotaAlunoListComponent,
+    RegistrarNotaNota2FormComponent,
+    RegistrarNotaNota3FormComponent,
   ],
   imports: [
     CommonModule,

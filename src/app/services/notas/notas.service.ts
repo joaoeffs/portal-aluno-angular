@@ -15,6 +15,10 @@ export class NotasService {
     return this.httpClient.get<ListagemNotas[]>(`${this.API}/${id}/listar-notas`);
   }
 
+    loadById(id: string) {
+    return this.httpClient.get<Notas>(`${this.API}/${id}`);
+  }
+
   save(notas: Partial<Notas>) {
     if (notas.id) {
       return this.update(notas);

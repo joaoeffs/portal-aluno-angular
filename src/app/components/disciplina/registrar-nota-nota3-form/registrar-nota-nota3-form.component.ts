@@ -1,24 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Location } from '@angular/common';
 import { FormBuilder, FormControl } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { NotasService } from 'src/app/services/notas/notas.service';
-import { Notas } from 'src/app/interfaces/notas/notas';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
+import { Notas } from 'src/app/interfaces/notas/notas';
 
 @Component({
-  selector: 'app-registrar-nota-form',
-  templateUrl: './registrar-nota-form.component.html',
-  styleUrls: ['./registrar-nota-form.component.scss']
+  selector: 'app-registrar-nota-nota3-form',
+  templateUrl: './registrar-nota-nota3-form.component.html',
+  styleUrls: ['./registrar-nota-nota3-form.component.scss']
 })
-export class RegistrarNotaFormComponent implements OnInit {
+export class RegistrarNotaNota3FormComponent {
 
   alunoDisciplinaId!: string;
 
   form = this.formBuilder.group({
     id: [''],
     n1: new FormControl('', { nonNullable: true }),
-    alunoDisciplina: this.alunoDisciplinaId,
+    n2: new FormControl('', { nonNullable: true }),
+    n3: new FormControl('', { nonNullable: true })
   });
 
   constructor(
@@ -27,16 +28,16 @@ export class RegistrarNotaFormComponent implements OnInit {
     private snackBar: MatSnackBar,
     private location: Location,
     private route: ActivatedRoute
-  ) {
-    this.route.params.subscribe(params => {
-      this.alunoDisciplinaId = params['id'];
-    })
-
-    this.form.get('alunoDisciplina')?.setValue(this.alunoDisciplinaId);
-  }
+  ) { }
 
   ngOnInit(): void {
-
+    const notas: Notas = this.route.snapshot.data['notas'];
+    this.form.setValue({
+      id: notas.id,
+      n1: notas.n1,
+      n2: notas.n2,
+      n3: notas.n3
+    })
    }
 
   onSubmit() {

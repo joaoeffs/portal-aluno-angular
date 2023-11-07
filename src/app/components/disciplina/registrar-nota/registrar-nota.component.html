@@ -7,6 +7,8 @@
       *ngIf="notas$ | async as notas; else loading"
       [notas]="notas"
       (registrar)="onRegistrar($event)"
+      (registrarNota2)="onRegistrarNota2($event)"
+      (registrarNota3)="onRegistrarNota3($event)"
     ></app-registrar-nota-aluno-list>
 
     <ng-template #loading>
