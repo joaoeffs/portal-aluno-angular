@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { AlunoDisciplina } from 'src/app/interfaces/aluno-disciplina/aluno-disciplina';
 import { ListagemAlunos } from 'src/app/interfaces/aluno/aluno';
-import { ListagemNotas } from 'src/app/interfaces/notas/notas';
+import { ListagemNotas, Notas } from 'src/app/interfaces/notas/notas';
 
 @Component({
   selector: 'app-registrar-nota-aluno-list',
@@ -12,11 +12,21 @@ export class RegistrarNotaAlunoListComponent {
 
   @Input() notas : ListagemNotas[] = [];
   @Output() registrar = new EventEmitter(false);
+  @Output() registrarNota2 = new EventEmitter(false);
+  @Output() registrarNota3 = new EventEmitter(false);
 
   readonly displayedColumns = ['actions', 'matricula', 'nome', 'sobrenome', 'n1', 'n2', 'n3'];
 
-  onRegistrar(alunoDisciplina: AlunoDisciplina) {
-    this.registrar.emit(alunoDisciplina);
+  onRegistrar(notas: Notas) {
+    this.registrar.emit(notas);
+  }
+
+  onRegistrarNota2(notas: Notas) {
+    this.registrarNota2.emit(notas);
+  }
+
+  onRegistrarNota3(notas: Notas) {
+    this.registrarNota3.emit(notas);
   }
 
 }

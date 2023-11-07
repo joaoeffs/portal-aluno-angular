@@ -5,7 +5,7 @@ import { Observable, catchError, of } from 'rxjs';
 import { AlunoDisciplina, AlunoDisciplinaForm } from 'src/app/interfaces/aluno-disciplina/aluno-disciplina';
 import { ListagemAlunos } from 'src/app/interfaces/aluno/aluno';
 import { Disciplina } from 'src/app/interfaces/disciplina/disciplina';
-import { ListagemNotas } from 'src/app/interfaces/notas/notas';
+import { ListagemNotas, Notas } from 'src/app/interfaces/notas/notas';
 import { AlunoDisciplinaService } from 'src/app/services/aluno-disciplina/aluno-disciplina.service';
 import { NotasService } from 'src/app/services/notas/notas.service';
 import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';
@@ -51,8 +51,15 @@ export class RegistrarNotaComponent {
   }
 
   onRegistrar(alunoDisciplina: AlunoDisciplinaForm) {
-    console.log(alunoDisciplina)
-    this.router.navigate([alunoDisciplina.id, 'registrar'], { relativeTo: this.route })
+    this.router.navigate([alunoDisciplina.id, 'registrar-nota-1'], { relativeTo: this.route })
+  }
+
+  onRegistrarNota2(notas: ListagemNotas) {
+    this.router.navigate([notas.id, 'registrar-nota-2', notas.notaId], { relativeTo: this.route })
+  }
+
+  onRegistrarNota3(notas: ListagemNotas) {
+    this.router.navigate([notas.id, 'registrar-nota-3', notas.notaId], { relativeTo: this.route })
   }
 
 }
