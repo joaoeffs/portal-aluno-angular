@@ -8,7 +8,7 @@ import { ListagemAlunos } from 'src/app/interfaces/aluno/aluno';
 })
 export class AlunoService {
 
-  private readonly API = 'api/aluno'
+  private readonly API = 'api/usuario'
 
   constructor(private httpClient: HttpClient) { }
 
