@@ -1,39 +1,55 @@
-<div class="conteudo-login">
+<!-- Section: Design Block -->
+<section class="text-center">
+  <!-- Background image -->
+  <div class="p-5 bg-image" style="
+        background-image: url('https://mdbootstrap.com/img/new/textures/full/171.jpg');
+        height: 300px;
+        "></div>
+  <!-- Background image -->
 
-  <form class="conteudo-form" [formGroup]="loginForm" (submit)="submitLogin()">
+  <div class="card mx-4 mx-md-5 shadow-5-strong" style="
+        margin-top: -100px;
+        background: hsla(0, 0%, 100%, 0.8);
+        backdrop-filter: blur(30px);
+        ">
+    <div class="card-body py-5 px-md-5">
 
-    <div class="logo">
-      Logo
+      <div class="row d-flex justify-content-center">
+        <div class="col-lg-8">
+          <h2 class="fw-bold mb-2">Portal do Aluno - Diocese de Joinville</h2>
+          <img class="mb-3 img-fluid" alt="Responsive image" src="https://seeklogo.com/images/D/diocese-de-joinville-logo-114597E4AF-seeklogo.com.png">
+
+          <form class="conteudo-form" [formGroup]="loginForm" (submit)="submitLogin()">
+
+            <div>
+              <div class="form-outline mb-4">
+                <input type="email" class="form-control" formControlName="email" placeholder="Email Adress">
+              </div>
+              <div class="mensagem-erro"
+                  *ngIf="loginForm.get('email')?.errors?.['email'] && loginForm.get('email')?.touched">
+                  Formato do e-mail não é válido
+            </div>
+            </div>
+
+            <div>
+              <div class="form-outline mb-4">
+                <input type="password" class="form-control" placeholder="Password" formControlName="senha">
+              </div>
+              <div class="mensagem-erro"
+                  *ngIf="loginForm.get('senha')?.errors?.['required'] && loginForm.get('senha')?.touched">
+                  Campo Obrigatório
+              </div>
+            </div>
+
+            <!-- Submit button -->
+            <div>
+              <button class="input-submit" [disabled]="!loginForm.valid">Entrar</button>
+            </div>
+
+          </form>
+        </div>
+      </div>
     </div>
-
-    <div>
-      <div>
-        <input type="text" class="input-login" placeholder="email" formControlName="email">
-      </div>
-      <div class="mensagem-erro"
-          *ngIf="loginForm.get('email')?.errors?.['required'] && loginForm.get('email')?.touched">
-        Campo Obrigatório
-      </div>
-      <div class="mensagem-erro"
-          *ngIf="loginForm.get('email')?.errors?.['email'] && loginForm.get('email')?.touched">
-        Formato do e-mail não é válido
-      </div>
-    </div>
-
-    <div>
-      <div>
-        <input type="password" class="input-login" placeholder="senha" formControlName="senha">
-      </div>
-      <div class="mensagem-erro"
-          *ngIf="loginForm.get('senha')?.errors?.['required'] && loginForm.get('senha')?.touched">
-        Campo Obrigatório
-      </div>
-    </div>
-
-    <div>
-      <button class="input-submit" [disabled]="!loginForm.valid">Logar</button>
-    </div>
-
-  </form>
-
-</div>
+  </div>
+</section>
+<!-- Section: Design Block -->
