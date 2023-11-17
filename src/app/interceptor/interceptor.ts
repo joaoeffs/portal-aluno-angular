@@ -7,33 +7,24 @@ import { Injectable } from "@angular/core";
 export class Interceptor implements HttpInterceptor {
 
   constructor(
-    private autenticationService: AuthenticationService
+    private authenticationService: AuthenticationService
   )
   {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    let headers;
+    const token = this.authenticationService.obterToken();
 
-    if (req.body instanceof FormData) {
-      headers: new HttpHeaders({
-        contentType: "false",
-        processData: "false",
-        Authorization: "Bearer " + this.autenticationService.obterToken()
-      })
+    if (token) {
+      const cloned = req.clone({
+        setHeaders: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      return next.handle(cloned);
     } else {
-      headers = new HttpHeaders()
-      .append("accept", "application/json")
-      .append("Content-Type", "application/json")
-      .append("Authorization", "Bearer " + this.autenticationService.obterToken())
+      return next.handle(req);
     }
-
-    let request = req.clone({ headers })
-
-    return next.handle(request).pipe(
-      map((event) => {
-        return event;
-      })
-    )
   }
+
 
 }

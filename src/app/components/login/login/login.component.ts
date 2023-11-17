@@ -1,4 +1,3 @@
-import { Token } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -19,7 +18,7 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private loginService: LoginService,
-    private autenticationService: AuthenticationService
+    private authenticationService: AuthenticationService
   )
   {}
 
@@ -35,15 +34,16 @@ export class LoginComponent implements OnInit {
 
     this.loginService.login(dadosLogin).subscribe(
       result => {
-        console.log(result)
-        console.log(result.token)
-        this.autenticationService.defineToken(result.token)
-        this.router.navigate(["/home"]);
+        this.authenticationService.defineToken(result.token);
+
+        setTimeout(() => {
+          this.router.navigate(['/home']);
+        });
       },
       erro => {
 
       }
-    )
+    );
 
   }
 
