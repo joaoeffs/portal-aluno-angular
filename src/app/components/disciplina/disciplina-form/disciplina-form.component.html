@@ -1,26 +1,46 @@
-<mat-card>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-auto" style="padding-left: 0;">
+      <app-sidebar></app-sidebar>
+    </div>
 
-  <mat-card-content>
+    <div class="col">
+      <div class="card mt-5">
+        <div class="card-body">
 
-    <mat-toolbar color="primary">Criar Disciplina</mat-toolbar>
+          <!-- Bootstrap navbar como substituto do mat-toolbar -->
+          <nav class="navbar navbar-dark bg-primary">
+            <div class="container-fluid">
+              <span class="navbar-brand mb-0 h1">Registro de Disciplina</span>
+            </div>
+          </nav>
 
-    <form [formGroup]="form" class="min-width">
-      <mat-form-field class="full-width">
-        <input matInput placeholder="Nome" formControlName="nome">
-      </mat-form-field>
+          <!-- Formulário -->
+          <form [formGroup]="form" class="w-100">
 
-      <mat-form-field class="full-width">
-        <input matInput placeholder="Código" formControlName="codigo">
-      </mat-form-field>
-  </form>
+            <!-- Campo de nome -->
+            <div class="mb-3">
+              <label for="nome" class="form-label">Nome</label>
+              <input type="text" class="form-control" id="nome" placeholder="Nome" formControlName="nome">
+            </div>
 
-    <mat-card-actions align="end">
-      <button mat-raised-button color="primary" (click)="onSubmit()">Salvar</button>
-      <button mat-raised-button (click)="onCancel()">Cancelar</button>
-    </mat-card-actions>
+            <!-- Campo de código -->
+            <div class="mb-3">
+              <label for="codigo" class="form-label">Código</label>
+              <input type="text" class="form-control" id="codigo" placeholder="Código" formControlName="codigo">
+            </div>
 
-  </mat-card-content>
+          </form>
 
-</mat-card>
+          <!-- Botões de ação -->
+          <div class="d-flex justify-content-end">
+            <button type="button" class="btn btn-primary me-2" (click)="onSubmit()">Salvar</button>
+            <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancelar</button>
+          </div>
 
-<router-outlet></router-outlet>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

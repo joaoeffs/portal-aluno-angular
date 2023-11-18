@@ -17,15 +17,15 @@ export class RegistrarNotaAlunoListComponent {
 
   readonly displayedColumns = ['actions', 'matricula', 'nome', 'sobrenome', 'n1', 'n2', 'n3'];
 
-  onRegistrar(notas: Notas) {
+  onRegistrar(notas: ListagemNotas) {
     this.registrar.emit(notas);
   }
 
-  onRegistrarNota2(notas: Notas) {
+  onRegistrarNota2(notas: ListagemNotas) {
     this.registrarNota2.emit(notas);
   }
 
-  onRegistrarNota3(notas: Notas) {
+  onRegistrarNota3(notas: ListagemNotas) {
     this.registrarNota3.emit(notas);
   }
 

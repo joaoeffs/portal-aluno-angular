@@ -24,6 +24,8 @@ import { RegistrarNotaAlunoListComponent } from './registrar-nota-aluno-list/reg
 import { RegistrarNotaNota2FormComponent } from './registrar-nota-nota2-form/registrar-nota-nota2-form.component';
 import { RegistrarNotaNota3FormComponent } from './registrar-nota-nota3-form/registrar-nota-nota3-form.component';
 
+import { SideBarModule } from 'src/app/directives/sidebar/sidebar.module';
+
 
 @NgModule({
   declarations: [
@@ -36,7 +38,7 @@ import { RegistrarNotaNota3FormComponent } from './registrar-nota-nota3-form/reg
     RegistrarNotaFormComponent,
     RegistrarNotaAlunoListComponent,
     RegistrarNotaNota2FormComponent,
-    RegistrarNotaNota3FormComponent,
+    RegistrarNotaNota3FormComponent
   ],
   imports: [
     CommonModule,
@@ -51,7 +53,8 @@ import { RegistrarNotaNota3FormComponent } from './registrar-nota-nota3-form/reg
     MatFormFieldModule,
     MatInputModule,
     MatSnackBarModule,
-    MatMenuModule
+    MatMenuModule,
+    SideBarModule
   ]
 })
 export class DisciplinaModule { }

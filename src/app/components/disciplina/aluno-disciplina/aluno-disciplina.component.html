@@ -1,41 +1,68 @@
-<mat-card>
-  <mat-card-content>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-auto" style="padding-left: 0;">
+      <app-sidebar></app-sidebar>
+    </div>
 
-    <mat-toolbar color="primary">Vincular Aluno</mat-toolbar>
+    <div class="col">
+      <div class="card mt-5">
+        <div class="card-body">
 
-    <form [formGroup]="form" class="min-width">
-      <mat-form-field class="full-width">
-        <mat-label>Aluno</mat-label>
-        <select matNativeControl formControlName="aluno">
-          <option *ngFor="let aluno of alunos | async" [value]="aluno.id">{{ aluno.nome }}</option>
-        </select>
-      </mat-form-field>
-    </form>
+          <!-- Usando classes de Bootstrap para a barra de ferramentas -->
+          <nav class="navbar navbar-dark bg-primary">
+            <div class="container-fluid">
+              <span class="navbar-text">Vincular Aluno</span>
+            </div>
+          </nav>
 
-    <mat-card-actions align="end">
-      <button mat-raised-button color="primary" (click)="onSubmit()">Salvar</button>
-      <button mat-raised-button (click)="onCancel()">Cancelar</button>
-    </mat-card-actions>
+          <!-- Formulário com o grupo de formulário do Angular -->
+          <form [formGroup]="form">
+            <div class="mb-3">
+              <label for="alunoSelect" class="form-label">Aluno</label>
+              <select class="form-select" id="alunoSelect" formControlName="aluno">
+                <option *ngFor="let aluno of alunos | async" [value]="aluno.id">{{ aluno.nome }}</option>
+              </select>
+            </div>
+          </form>
 
-  </mat-card-content>
-</mat-card>
+          <!-- Ações do cartão -->
+          <div class="d-flex justify-content-end">
+            <button type="button" class="btn btn-primary me-2" (click)="onSubmit()">Salvar</button>
+            <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancelar</button>
+          </div>
 
-<mat-card>
-  <mat-card-content>
-
-    <mat-toolbar color="primary">Listagem de Alunos</mat-toolbar>
-
-    <app-aluno-disciplina-list
-      *ngIf="alunoDisciplina$ | async as alunoDisciplina; else loading"
-      [alunoDisciplina]="alunoDisciplina"
-      (remove)="onRemove($event)"
-    ></app-aluno-disciplina-list>
-
-    <ng-template #loading>
-      <div class="loading-spinner">
-        <mat-spinner></mat-spinner>
+        </div>
       </div>
-    </ng-template>
 
-  </mat-card-content>
-</mat-card>
+      <div class="card mt-3">
+        <div class="card-body">
+
+          <!-- Barra de ferramentas para a listagem de alunos -->
+          <nav class="navbar navbar-dark bg-primary">
+            <div class="container-fluid">
+              <span class="navbar-text">Listagem de Alunos</span>
+            </div>
+          </nav>
+
+          <!-- Componente de listagem de alunos, se estiver disponível -->
+          <app-aluno-disciplina-list
+            *ngIf="alunoDisciplina$ | async as alunoDisciplina; else loading"
+            [alunoDisciplina]="alunoDisciplina"
+            (remove)="onRemove($event)"
+          ></app-aluno-disciplina-list>
+
+          <!-- Template de carregamento com spinner do Bootstrap -->
+          <ng-template #loading>
+            <div class="d-flex justify-content-center">
+              <div class="spinner-border" role="status">
+                <span class="visually-hidden">Carregando...</span>
+              </div>
+            </div>
+          </ng-template>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

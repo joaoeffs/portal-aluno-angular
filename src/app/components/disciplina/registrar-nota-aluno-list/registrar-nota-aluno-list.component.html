@@ -1,70 +1,44 @@
-<mat-table [dataSource]="notas" class="mat-elevation-z8">
-
-  <!-- Actions Column-->
-  <ng-container matColumnDef="actions">
-    <mat-header-cell *matHeaderCellDef></mat-header-cell>
-
-    <mat-cell *matCellDef="let turma">
-      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-        <mat-icon>more_vert</mat-icon>
-      </button>
-      <mat-menu #menu="matMenu">
-        <button
-          mat-menu-item
-          (click)="onRegistrar(turma)"
-        >
-          <span>Registrar Nota 1</span>
-        </button>
-        <button
-          mat-menu-item
-          (click)="onRegistrarNota2(turma)"
-        >
-          <span>Registrar Nota 2</span>
-        </button>
-        <button
-        mat-menu-item
-        (click)="onRegistrarNota3(turma)"
-      >
-        <span>Registrar Nota 3</span>
-      </button>
-      </mat-menu>
-
-    </mat-cell>
-  </ng-container>
-
-<!-- Nome Column -->
-<ng-container matColumnDef="nome">
-  <mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
-  <mat-cell *matCellDef="let notas"> {{notas.nome}} </mat-cell>
-</ng-container>
-
-<!-- Sobrenome Column -->
-<ng-container matColumnDef="sobrenome">
-  <mat-header-cell *matHeaderCellDef> Sobrenome </mat-header-cell>
-  <mat-cell *matCellDef="let notas"> {{notas.sobrenome}} </mat-cell>
-</ng-container>
-
-<!-- Matricula Column -->
-<ng-container matColumnDef="matricula">
-  <mat-header-cell *matHeaderCellDef> Matricula </mat-header-cell>
-  <mat-cell *matCellDef="let notas"> {{notas.matricula}} </mat-cell>
-</ng-container>
-
-<ng-container matColumnDef="n1">
-  <mat-header-cell *matHeaderCellDef> Nota 1 </mat-header-cell>
-  <mat-cell *matCellDef="let notas"> {{notas.n1}} </mat-cell>
-</ng-container>
-
-<ng-container matColumnDef="n2">
-  <mat-header-cell *matHeaderCellDef> Nota 2 </mat-header-cell>
-  <mat-cell *matCellDef="let notas"> {{notas.n2}} </mat-cell>
-</ng-container>
-
-<ng-container matColumnDef="n3">
-  <mat-header-cell *matHeaderCellDef> Nota 3 </mat-header-cell>
-  <mat-cell *matCellDef="let notas"> {{notas.n3}} </mat-cell>
-</ng-container>
-
-<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-</mat-table>
+<div class="container-fluid">
+  <div class="table-responsive">
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <!-- Cabeçalho das colunas -->
+          <th scope="col">Ações</th>
+          <th scope="col">Nome</th>
+          <th scope="col">Sobrenome</th>
+          <th scope="col">Matrícula</th>
+          <th scope="col">Nota 1</th>
+          <th scope="col">Nota 2</th>
+          <th scope="col">Nota 3</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Linhas da tabela -->
+        <tr *ngFor="let notas of notas">
+          <td>
+            <!-- Dropdown de ações -->
+            <div class="drop">
+              <button class="btn btn-primary" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-three-dots-vertical"></i>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" (click)="onRegistrar(notas)">Registrar Nota 1</a></li>
+                <li><div class="dropdown-divider"></div></li>
+                <li><a class="dropdown-item" (click)="onRegistrarNota2(notas)">Registrar Nota 2</a></li>
+                <li><div class="dropdown-divider"></div></li>
+                <li><a class="dropdown-item" (click)="onRegistrarNota3(notas)">Registrar Nota 3</a></li>
+              </ul>
+            </div>
+          </td>
+          <td>{{ notas.nome }}</td>
+          <td>{{ notas.sobrenome }}</td>
+          <td>{{ notas.matricula }}</td>
+          <td>{{ notas.n1 }}</td>
+          <td>{{ notas.n2 }}</td>
+          <td>{{ notas.n3 }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
