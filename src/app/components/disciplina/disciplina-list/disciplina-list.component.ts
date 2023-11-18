@@ -8,7 +8,7 @@ import { Disciplina, ListagemDisciplina } from 'src/app/interfaces/disciplina/di
 })
 export class DisciplinaListComponent {
 
-  @Input() disciplina : ListagemDisciplina[] = [];
+  @Input() disciplinas : ListagemDisciplina[] = [];
   @Output() edit = new EventEmitter(false);
   @Output() remove = new EventEmitter(false);
   @Output() vincularAluno = new EventEmitter(false);
@@ -16,19 +16,19 @@ export class DisciplinaListComponent {
 
   readonly displayedColumns = ['actions', 'nome', 'codigo'];
 
-  onEdit(disciplina: Disciplina) {
+  onEdit(disciplina: ListagemDisciplina) {
     this.edit.emit(disciplina);
   }
 
-  onRemove(disciplina: Disciplina) {
+  onRemove(disciplina: ListagemDisciplina) {
     this.remove.emit(disciplina)
   }
 
-  onVincularAluno(disciplina: Disciplina) {
+  onVincularAluno(disciplina: ListagemDisciplina) {
     this.vincularAluno.emit(disciplina);
   }
 
-  onRegistrarNota(disciplina: Disciplina) {
+  onRegistrarNota(disciplina: ListagemDisciplina) {
     this.registrarNota.emit(disciplina);
   }
 

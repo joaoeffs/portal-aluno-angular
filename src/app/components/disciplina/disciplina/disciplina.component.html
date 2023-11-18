@@ -1,32 +1,44 @@
-<mat-card>
-  <mat-card-content>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-auto" style="padding-left: 0;">
+      <app-sidebar></app-sidebar>
+    </div>
 
-    <mat-toolbar color="primary">Disciplinas</mat-toolbar>
+    <div class="col">
 
-    <mat-card class="new-disciplina">
-      <mat-card-content >
-        <button mat-raised-button (click)="onAdd()">
-          <mat-icon>add</mat-icon>
-          Nova Disciplina
-        </button>
-      </mat-card-content>
-    </mat-card>
+      <div class="card">
+        <div class="card-body">
 
-    <app-disciplina-list
-      *ngIf="disciplina$ | async as disciplina; else loading"
-      [disciplina]="disciplina"
-      (add)="onAdd()"
-      (edit)="onEdit($event)"
-      (remove)="onRemove($event)"
-      (vincularAluno)="onVincularAluno($event)"
-      (registrarNota)="onRegistrarNota($event)"
-    ></app-disciplina-list>
+          <div class="bg-primary text-white p-2 mb-3">Disciplinas</div>
 
-    <ng-template #loading>
-      <div class="loading-spinner">
-        <mat-spinner></mat-spinner>
+          <div class="card mb-3">
+            <div class="card-body">
+              <button class="btn btn-raised btn-primary" (click)="onAdd()">
+                <i class="bi bi-plus-lg"></i>
+                Nova Disciplina
+              </button>
+            </div>
+          </div>
+
+          <app-disciplina-list
+            *ngIf="disciplina$ | async as disciplina; else loading"
+            [disciplinas]="disciplina"
+            (add)="onAdd()"
+            (edit)="onEdit($event)"
+            (remove)="onRemove($event)"
+            (vincularAluno)="onVincularAluno($event)"
+            (registrarNota)="onRegistrarNota($event)"
+          ></app-disciplina-list>
+
+          <ng-template #loading>
+            <div class="loading-spinner">
+              <mat-spinner></mat-spinner>
+            </div>
+          </ng-template>
+
+        </div>
       </div>
-    </ng-template>
 
-  </mat-card-content>
-</mat-card>
+    </div>
+  </div>
+</div>

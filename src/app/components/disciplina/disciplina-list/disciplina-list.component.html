@@ -1,55 +1,35 @@
-<mat-table [dataSource]="disciplina" class="mat-elevation-z8">
-
-  <!-- Actions Column-->
-  <ng-container matColumnDef="actions">
-    <mat-header-cell *matHeaderCellDef></mat-header-cell>
-
-    <mat-cell *matCellDef="let disciplina">
-      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-        <mat-icon>more_vert</mat-icon>
-      </button>
-      <mat-menu #menu="matMenu">
-        <button
-          mat-menu-item
-          (click)="onEdit(disciplina)"
-        >
-          <span>Editar</span>
-        </button>
-        <button
-          mat-menu-item
-          (click)="onRemove(disciplina)"
-        >
-          <span>Remover</span>
-        </button>
-        <button
-          mat-menu-item
-          (click)="onVincularAluno(disciplina)"
-        >
-          <span>Vincular Aluno</span>
-        </button>
-        <button
-        mat-menu-item
-        (click)="onRegistrarNota(disciplina)"
-      >
-        <span>Registrar Nota</span>
-      </button>
-      </mat-menu>
-
-    </mat-cell>
-  </ng-container>
-
-  <!-- Nome Column -->
-  <ng-container matColumnDef="nome">
-    <mat-header-cell *matHeaderCellDef> Disciplina </mat-header-cell>
-    <mat-cell *matCellDef="let disciplina"> {{disciplina.nome}} </mat-cell>
-  </ng-container>
-
-  <!-- Codigo Column -->
-  <ng-container matColumnDef="codigo">
-    <mat-header-cell *matHeaderCellDef> Código </mat-header-cell>
-    <mat-cell *matCellDef="let disciplina"> {{disciplina.codigo}} </mat-cell>
-  </ng-container>
-
-  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-</mat-table>
+<div class="container-fluid">
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Ações</th>
+          <th scope="col">Disciplina</th>
+          <th scope="col">Código</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let disciplina of disciplinas">
+          <td>
+            <div class="drop">
+              <button class="btn btn-primary" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-three-dots-vertical"></i>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <li><button class="dropdown-item" (click)="onEdit(disciplina)">Editar</button></li>
+                <li><div class="dropdown-divider"></div></li>
+                <li><button class="dropdown-item" (click)="onRemove(disciplina)">Remover</button></li>
+                <li><div class="dropdown-divider"></div></li>
+                <li><button class="dropdown-item" (click)="onVincularAluno(disciplina)">Vincular Aluno</button></li>
+                <li><div class="dropdown-divider"></div></li>
+                <li><button class="dropdown-item" (click)="onRegistrarNota(disciplina)">Registrar Nota</button></li>
+              </ul>
+            </div>
+          </td>
+          <td>{{ disciplina.nome }}</td>
+          <td>{{ disciplina.codigo }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

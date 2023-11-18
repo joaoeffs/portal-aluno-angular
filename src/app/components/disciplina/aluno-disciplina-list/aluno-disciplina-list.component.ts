@@ -14,7 +14,7 @@ export class AlunoDisciplinaListComponent {
 
   readonly displayedColumns = ['actions', 'nome', 'sobrenome', 'matricula'];
 
-  onRemove(alunoDisciplina: AlunoDisciplina) {
+  onRemove(alunoDisciplina: ListagemAlunos) {
     this.remove.emit(alunoDisciplina);
   }
 
