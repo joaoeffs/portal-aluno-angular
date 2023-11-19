@@ -21,6 +21,10 @@ export class AlunoDisciplinaService {
     return this.httpClient.get<ListagemNotas[]>(`${this.API}/${id}/listar-notas`);
   }
 
+  getById(id: string) {
+    return this.httpClient.get<any>(`${this.API}/${id}/aluno`)
+  }
+
   save(alunodisciplina: Partial<AlunoDisciplina>) {
     return this.httpClient.post<AlunoDisciplina>(this.API, alunodisciplina);
   }

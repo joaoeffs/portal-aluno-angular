@@ -5,6 +5,7 @@ import { NotasService } from 'src/app/services/notas/notas.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { Notas } from 'src/app/interfaces/notas/notas';
+import { AlunoDisciplinaService } from 'src/app/services/aluno-disciplina/aluno-disciplina.service';
 
 @Component({
   selector: 'app-registrar-nota-nota3-form',
@@ -22,15 +23,32 @@ export class RegistrarNotaNota3FormComponent {
     n3: new FormControl('', { nonNullable: true })
   });
 
+  nomeAluno!: string;
+  sobrenomeAluno!: string;
+  matriculaAluno!: string;
+
   constructor(
     private formBuilder: FormBuilder,
     private service: NotasService,
     private snackBar: MatSnackBar,
     private location: Location,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private alunoDisciplinaService: AlunoDisciplinaService
   ) { }
 
   ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      this.alunoDisciplinaId = params['id'];
+    })
+
+    this.alunoDisciplinaService.getById(this.alunoDisciplinaId).subscribe(
+      (alunoDisciplina) => {
+        this.nomeAluno = alunoDisciplina.aluno.nome;
+        this.sobrenomeAluno = alunoDisciplina.aluno.sobrenome;
+        this.matriculaAluno = alunoDisciplina.aluno.matricula;
+      }
+    )
+
     const notas: Notas = this.route.snapshot.data['notas'];
     this.form.setValue({
       id: notas.id,

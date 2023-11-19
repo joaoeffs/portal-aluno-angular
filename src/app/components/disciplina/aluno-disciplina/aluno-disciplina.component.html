@@ -8,24 +8,23 @@
       <div class="card mt-5">
         <div class="card-body">
 
-          <!-- Usando classes de Bootstrap para a barra de ferramentas -->
           <nav class="navbar navbar-dark bg-primary">
             <div class="container-fluid">
-              <span class="navbar-text">Vincular Aluno</span>
+              <span class="navbar-brand mb-0 h1">Vincular Aluno - {{ nomeDisciplina }} ({{ codigoDisciplina }})</span>
             </div>
           </nav>
 
-          <!-- Formulário com o grupo de formulário do Angular -->
           <form [formGroup]="form">
-            <div class="mb-3">
+            <div class="mb-3 mt-3">
               <label for="alunoSelect" class="form-label">Aluno</label>
               <select class="form-select" id="alunoSelect" formControlName="aluno">
-                <option *ngFor="let aluno of alunos | async" [value]="aluno.id">{{ aluno.nome }}</option>
+                <option *ngFor="let aluno of alunos | async" [value]="aluno.id">
+                  {{ aluno.matricula }} - {{ aluno.nome }} {{ aluno.sobrenome }}
+                </option>
               </select>
             </div>
           </form>
 
-          <!-- Ações do cartão -->
           <div class="d-flex justify-content-end">
             <button type="button" class="btn btn-primary me-2" (click)="onSubmit()">Salvar</button>
             <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancelar</button>
@@ -37,21 +36,18 @@
       <div class="card mt-3">
         <div class="card-body">
 
-          <!-- Barra de ferramentas para a listagem de alunos -->
           <nav class="navbar navbar-dark bg-primary">
             <div class="container-fluid">
-              <span class="navbar-text">Listagem de Alunos</span>
+              <span class="navbar-brand mb-0 h1">Listagem de Alunos</span>
             </div>
           </nav>
 
-          <!-- Componente de listagem de alunos, se estiver disponível -->
           <app-aluno-disciplina-list
             *ngIf="alunoDisciplina$ | async as alunoDisciplina; else loading"
             [alunoDisciplina]="alunoDisciplina"
             (remove)="onRemove($event)"
           ></app-aluno-disciplina-list>
 
-          <!-- Template de carregamento com spinner do Bootstrap -->
           <ng-template #loading>
             <div class="d-flex justify-content-center">
               <div class="spinner-border" role="status">
@@ -62,7 +58,6 @@
 
         </div>
       </div>
-
     </div>
   </div>
 </div>

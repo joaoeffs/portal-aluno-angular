@@ -7,6 +7,7 @@ import { ListagemAlunos } from 'src/app/interfaces/aluno/aluno';
 import { Disciplina } from 'src/app/interfaces/disciplina/disciplina';
 import { ListagemNotas, Notas } from 'src/app/interfaces/notas/notas';
 import { AlunoDisciplinaService } from 'src/app/services/aluno-disciplina/aluno-disciplina.service';
+import { DisciplinaService } from 'src/app/services/disciplina/disciplina.service';
 import { NotasService } from 'src/app/services/notas/notas.service';
 import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';
 
@@ -15,14 +16,16 @@ import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/err
   templateUrl: './registrar-nota.component.html',
   styleUrls: ['./registrar-nota.component.scss']
 })
-export class RegistrarNotaComponent {
+export class RegistrarNotaComponent implements OnInit {
 
   disciplinaId!: string;
   notas$: Observable<ListagemNotas[]> | null = null;
+  nomeDisciplina!: string;
+  codigoDisciplina!: string;
 
   constructor(
-    private service: NotasService,
     private alunoDisciplina: AlunoDisciplinaService,
+    private disciplinaService: DisciplinaService,
     private router: Router,
     private route: ActivatedRoute,
     public dialog: MatDialog,
@@ -32,6 +35,15 @@ export class RegistrarNotaComponent {
     });
 
     this.refresh(this.disciplinaId);
+  }
+
+  ngOnInit(): void {
+      this.disciplinaService.loadById(this.disciplinaId).subscribe(
+        (disciplina) => {
+          this.nomeDisciplina = disciplina.nome
+          this.codigoDisciplina = disciplina.codigo
+        }
+      )
   }
 
   refresh(disciplinaId: string) {
