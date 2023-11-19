@@ -10,6 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AlunoService } from 'src/app/services/aluno/aluno.service';
 import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';
 import { AlunoDisciplina } from 'src/app/interfaces/aluno-disciplina/aluno-disciplina';
+import { DisciplinaService } from 'src/app/services/disciplina/disciplina.service';
 
 @Component({
   selector: 'app-aluno-disciplina',
@@ -28,6 +29,8 @@ export class AlunoDisciplinaComponent implements OnInit {
 
   alunos: Observable<ListagemAlunos[]> | undefined;
   alunoDisciplina$: Observable<ListagemAlunos[]> | null = null;
+  nomeDisciplina!: string;
+  codigoDisciplina!: string;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -36,7 +39,8 @@ export class AlunoDisciplinaComponent implements OnInit {
     private snackBar: MatSnackBar,
     public dialog: MatDialog,
     private route: ActivatedRoute,
-    private alunoService: AlunoService
+    private alunoService: AlunoService,
+    private disciplinaService: DisciplinaService
   ) {
     this.route.params.subscribe(params => {
       this.disciplinaId = params['id'];
@@ -67,6 +71,12 @@ export class AlunoDisciplinaComponent implements OnInit {
 
   ngOnInit(): void {
     this.alunos = this.alunoService.list();
+    this.disciplinaService.loadById(this.disciplinaId).subscribe(
+      (disciplina) => {
+        this.nomeDisciplina = disciplina.nome
+        this.codigoDisciplina = disciplina.codigo
+      }
+    )
   }
 
   refresh(id: string) {

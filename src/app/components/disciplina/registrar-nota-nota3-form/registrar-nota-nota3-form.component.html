@@ -8,22 +8,19 @@
       <div class="card mt-5">
         <div class="card-body">
 
-          <!-- Bootstrap Navbar substituindo mat-toolbar -->
           <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
             <div class="container-fluid">
-              <span class="navbar-brand">Registrar Nota 3</span>
+              <span class="navbar-brand">Registrar Nota 3 - {{ nomeAluno }} {{ sobrenomeAluno }} ({{ matriculaAluno }})</span>
             </div>
           </nav>
 
-          <!-- Formulário com Bootstrap -->
           <form [formGroup]="form">
-            <div class="mb-3">
+            <div class="mb-3 mt-3">
               <label for="n1" class="form-label">Nota 3</label>
               <input type="text" class="form-control" id="n3" placeholder="Nota 3" formControlName="n3">
             </div>
           </form>
 
-          <!-- Botões de ação alinhados ao final do card com Bootstrap -->
           <div class="d-flex justify-content-end">
             <button type="button" class="btn btn-primary me-2" (click)="onSubmit()">Salvar</button>
             <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancelar</button>

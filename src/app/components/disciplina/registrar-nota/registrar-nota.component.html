@@ -8,14 +8,12 @@
       <div class="card mt-5">
         <div class="card-body">
 
-          <!-- Bootstrap 5 Navbar para substituir o mat-toolbar -->
           <nav class="navbar navbar-dark bg-primary">
             <div class="container-fluid">
-              <span class="navbar-brand mb-0 h1">Listagem de Alunos para Registro de Notas</span>
+              <span class="navbar-brand mb-0 h1">Registrar Notas - {{ nomeDisciplina }} ({{ codigoDisciplina }})</span>
             </div>
           </nav>
 
-          <!-- Componente Angular personalizado. Mantenha como está se não houver necessidade de alterações específicas para o Bootstrap -->
           <app-registrar-nota-aluno-list
             *ngIf="notas$ | async as notas; else loading"
             [notas]="notas"
@@ -24,7 +22,6 @@
             (registrarNota3)="onRegistrarNota3($event)"
           ></app-registrar-nota-aluno-list>
 
-          <!-- Template de carregamento com spinner do Bootstrap -->
           <ng-template #loading>
             <div class="d-flex justify-content-center">
               <div class="spinner-border text-primary" role="status">

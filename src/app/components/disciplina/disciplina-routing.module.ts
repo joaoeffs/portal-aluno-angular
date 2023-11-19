@@ -17,8 +17,8 @@ const routes: Routes = [
   { path: ':id/vincular-aluno', component: AlunoDisciplinaComponent },
   { path: ':id/registrar-nota', component: RegistrarNotaComponent },
   { path: ':id/registrar-nota/:id/registrar-nota-1', component: RegistrarNotaFormComponent, resolve: { notas: notasResolver } },
-  { path: ':id/registrar-nota/:id/registrar-nota-2/:id', component: RegistrarNotaNota2FormComponent, resolve: { notas: notasResolver } },
-  { path: ':id/registrar-nota/:id/registrar-nota-3/:id', component: RegistrarNotaNota3FormComponent, resolve: { notas: notasResolver } }
+  { path: ':id/registrar-nota/:id/registrar-nota-2/:notaId', component: RegistrarNotaNota2FormComponent, resolve: { notas: notasResolver } },
+  { path: ':id/registrar-nota/:id/registrar-nota-3/:nota_id', component: RegistrarNotaNota3FormComponent, resolve: { notas: notasResolver } }
 ];
 
 @NgModule({
