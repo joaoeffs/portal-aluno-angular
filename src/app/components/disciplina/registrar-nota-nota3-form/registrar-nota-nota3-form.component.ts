@@ -38,7 +38,7 @@ export class RegistrarNotaNota3FormComponent {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.alunoDisciplinaId = params['id'];
+      this.alunoDisciplinaId = params['idAlunoDisciplina'];
     })
 
     this.alunoDisciplinaService.getById(this.alunoDisciplinaId).subscribe(

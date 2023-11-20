@@ -16,9 +16,10 @@ const routes: Routes = [
   { path: 'editar/:id', component: DisciplinaFormComponent, resolve: { disciplina: disciplinaResolver } },
   { path: ':id/vincular-aluno', component: AlunoDisciplinaComponent },
   { path: ':id/registrar-nota', component: RegistrarNotaComponent },
-  { path: ':id/registrar-nota/:id/registrar-nota-1', component: RegistrarNotaFormComponent, resolve: { notas: notasResolver } },
-  { path: ':id/registrar-nota/:id/registrar-nota-2/:notaId', component: RegistrarNotaNota2FormComponent, resolve: { notas: notasResolver } },
-  { path: ':id/registrar-nota/:id/registrar-nota-3/:nota_id', component: RegistrarNotaNota3FormComponent, resolve: { notas: notasResolver } }
+  { path: ':id/registrar-nota/:idAlunoDisciplina/registrar-nota-1', component: RegistrarNotaFormComponent, resolve: { notas: notasResolver } },
+  { path: ':id/registrar-nota/:idAlunoDisciplina/registrar-nota-1/:id', component: RegistrarNotaFormComponent, resolve: { notas: notasResolver } },
+  { path: ':id/registrar-nota/:idAlunoDisciplina/registrar-nota-2/:id', component: RegistrarNotaNota2FormComponent, resolve: { notas: notasResolver } },
+  { path: ':id/registrar-nota/:idAlunoDisciplina/registrar-nota-3/:id', component: RegistrarNotaNota3FormComponent, resolve: { notas: notasResolver } }
 ];
 
 @NgModule({

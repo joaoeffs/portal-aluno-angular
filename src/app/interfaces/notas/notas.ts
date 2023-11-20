@@ -11,6 +11,8 @@ export interface ListagemNotas {
   n1: string;
   n2: string;
   n3: string;
+  media: string;
+  situacao: string;
   notaId: string;
   alunoId: string;
   nome: string;
