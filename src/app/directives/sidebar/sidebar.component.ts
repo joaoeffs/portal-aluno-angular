@@ -15,6 +15,16 @@ export class SideBarComponent {
   )
   {}
 
+  navigate(path: string) {
+    const role = sessionStorage.getItem('role');
+
+    if (path === 'disciplina' && (role === 'ADMIN' || role === 'PROFESSOR')) {
+      this.router.navigate(['/disciplina']);
+    } else if (path === 'disciplina' && role === 'ALUNO') {
+      this.router.navigate(['/notas'])
+    }
+  }
+
   sair() {
     this.authenticationService.limparToken()
     this.router.navigate(["/login"])

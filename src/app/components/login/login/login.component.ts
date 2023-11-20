@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
 
     this.loginService.login(dadosLogin).subscribe(
       result => {
-        this.authenticationService.defineToken(result.token);
+        this.authenticationService.defineToken(result.token, result.role);
 
         setTimeout(() => {
           this.router.navigate(['/home']);

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { first } from 'rxjs';
 import { ListagemNotas, Notas } from 'src/app/interfaces/notas/notas';
 
 @Injectable({
@@ -10,6 +11,13 @@ export class NotasService {
   private readonly API = 'api/notas'
 
   constructor(private httpClient: HttpClient) { }
+
+  list() {
+    return this.httpClient.get<ListagemNotas[]>(`${this.API}/aluno`)
+    .pipe(
+      first()
+    )
+  }
 
   listById(id: string) {
     return this.httpClient.get<ListagemNotas[]>(`${this.API}/${id}/listar-notas`);
