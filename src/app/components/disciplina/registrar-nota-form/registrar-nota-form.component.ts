@@ -19,6 +19,8 @@ export class RegistrarNotaFormComponent implements OnInit {
   form = this.formBuilder.group({
     id: [''],
     n1: new FormControl('', { nonNullable: true }),
+    n2: new FormControl('', { nonNullable: true }),
+    n3: new FormControl('', { nonNullable: true }),
     alunoDisciplina: this.alunoDisciplinaId,
   });
 
@@ -35,7 +37,7 @@ export class RegistrarNotaFormComponent implements OnInit {
     private alunoDisciplinaService: AlunoDisciplinaService
   ) {
     this.route.params.subscribe(params => {
-      this.alunoDisciplinaId = params['id'];
+      this.alunoDisciplinaId = params['idAlunoDisciplina'];
     })
 
     this.form.get('alunoDisciplina')?.setValue(this.alunoDisciplinaId);
@@ -49,6 +51,15 @@ export class RegistrarNotaFormComponent implements OnInit {
         this.matriculaAluno = alunoDisciplina.aluno.matricula;
       }
     )
+
+    const notas: Notas = this.route.snapshot.data['notas'];
+    this.form.setValue({
+      id: notas.id,
+      n1: notas.n1,
+      n2: notas.n2,
+      n3: notas.n3,
+      alunoDisciplina: notas.alunoDisciplina
+    })
    }
 
   onSubmit() {

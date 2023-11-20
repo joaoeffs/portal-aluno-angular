@@ -62,8 +62,13 @@ export class RegistrarNotaComponent implements OnInit {
     });
   }
 
-  onRegistrar(alunoDisciplina: AlunoDisciplinaForm) {
-    this.router.navigate([alunoDisciplina.id, 'registrar-nota-1'], { relativeTo: this.route })
+  onRegistrar(notas: ListagemNotas) {
+    debugger
+    if (!notas.notaId) {
+      this.router.navigate([notas.id, 'registrar-nota-1'], { relativeTo: this.route })
+    }
+
+    this.router.navigate([notas.id, 'registrar-nota-1', notas.notaId], { relativeTo: this.route })
   }
 
   onRegistrarNota2(notas: ListagemNotas) {

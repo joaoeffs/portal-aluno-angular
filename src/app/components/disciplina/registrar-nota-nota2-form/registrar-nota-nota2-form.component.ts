@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -12,7 +12,7 @@ import { AlunoDisciplinaService } from 'src/app/services/aluno-disciplina/aluno-
   templateUrl: './registrar-nota-nota2-form.component.html',
   styleUrls: ['./registrar-nota-nota2-form.component.scss']
 })
-export class RegistrarNotaNota2FormComponent {
+export class RegistrarNotaNota2FormComponent implements OnInit {
 
   alunoDisciplinaId!: string;
 
@@ -38,7 +38,7 @@ export class RegistrarNotaNota2FormComponent {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.alunoDisciplinaId = params['id'];
+      this.alunoDisciplinaId = params['idAlunoDisciplina'];
     })
 
     this.alunoDisciplinaService.getById(this.alunoDisciplinaId).subscribe(
