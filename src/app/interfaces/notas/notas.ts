@@ -18,6 +18,5 @@ export interface ListagemNotas {
   nome: string;
   sobrenome: string;
   matricula: string;
-
-
+  nomeDisciplina: string;
 }

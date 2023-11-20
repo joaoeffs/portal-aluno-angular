@@ -1,0 +1,26 @@
+<div class="container-fluid">
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Disciplina</th>
+          <th scope="col">Nota 1</th>
+          <th scope="col">Nota 2</th>
+          <th scope="col">Nota 3</th>
+          <th scope="col">Média</th>
+          <th scope="col">Situação</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let nota of notas">
+          <td>{{ nota.nomeDisciplina }}</td>
+          <td>{{ nota.n1 }}</td>
+          <td>{{ nota.n2 }}</td>
+          <td>{{ nota.n3 }}</td>
+          <td>{{ nota.media }}</td>
+          <td>{{ nota.situacao }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
