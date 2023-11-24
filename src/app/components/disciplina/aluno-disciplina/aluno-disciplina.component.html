@@ -61,3 +61,20 @@
     </div>
   </div>
 </div>
+
+<div class="modal fade" id="confirmModal" #confirmModal tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="confirmModalLabel">Confirmação de Remoção</h3>
+      </div>
+      <div class="modal-body">
+        <p class="text-center">Tem certeza de que deseja desvincular esse aluno?</p>
+      </div>
+      <div class="modal-footer justify-content-between">
+        <button type="button" class="btn btn-light" (click)="closeModal()" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-danger" (click)="confirmRemoval()">Confirmar</button>
+      </div>
+    </div>
+  </div>
+</div>

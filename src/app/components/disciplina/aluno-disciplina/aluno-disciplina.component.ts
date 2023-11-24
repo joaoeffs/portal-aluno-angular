@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Location } from '@angular/common';
 import { FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
@@ -19,7 +19,10 @@ import { DisciplinaService } from 'src/app/services/disciplina/disciplina.servic
 })
 export class AlunoDisciplinaComponent implements OnInit {
 
+  @ViewChild('confirmModal') confirmModal!: ElementRef;
+
   disciplinaId!: string;
+  currentAlunoDisciplina!: AlunoDisciplina;
 
   form = this.formBuilder.group({
     id: [''],
@@ -96,14 +99,29 @@ export class AlunoDisciplinaComponent implements OnInit {
   }
 
   onRemove(alunoDisciplina: AlunoDisciplina) {
-    if (alunoDisciplina.id !== null) {
-      this.service.remove(alunoDisciplina.id).subscribe(
+    this.currentAlunoDisciplina = alunoDisciplina;
+    this.openModal();
+  }
+
+  confirmRemoval() {
+    if (this.currentAlunoDisciplina.id !== null) {
+      this.service.remove(this.currentAlunoDisciplina.id).subscribe(
         () => {
-          this.snackBar.open('Aluno desvinculada com sucesso!', '', { duration: 5000 });
+          this.snackBar.open('Aluno desvinculado com sucesso!', '', { duration: 5000 });
           window.location.reload()
         }
       )
     }
+  }
+
+  openModal() {
+    this.confirmModal.nativeElement.classList.add('show');
+    this.confirmModal.nativeElement.style.display = 'block';
+  }
+
+  closeModal() {
+    this.confirmModal.nativeElement.classList.remove('show');
+    this.confirmModal.nativeElement.style.display = 'none';
   }
 
 }
