@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -14,9 +14,12 @@ import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/err
 })
 export class DisciplinaComponent implements OnInit {
 
+  @ViewChild('confirmModal') confirmModal!: ElementRef;
+
   @Output() add = new EventEmitter(false);
 
   disciplina$: Observable<ListagemDisciplina[]> | null = null;
+  currentDisciplina!: Disciplina;
 
   constructor(
     private disciplinaService: DisciplinaService,
@@ -53,8 +56,14 @@ export class DisciplinaComponent implements OnInit {
   }
 
   onRemove(disciplina: Disciplina) {
-    if (disciplina.id !== null) {
-      this.disciplinaService.remove(disciplina.id).subscribe(
+    // Armazene a disciplina atual, se necessário
+    this.currentDisciplina = disciplina;
+    this.openModal();
+  }
+
+  confirmRemoval() {
+    if (this.currentDisciplina.id !== null) {
+      this.disciplinaService.remove(this.currentDisciplina.id).subscribe(
         () => {
           this.refresh()
           this.snackBar.open('Disciplina removida com sucesso!', '', { duration: 5000 });
@@ -62,14 +71,25 @@ export class DisciplinaComponent implements OnInit {
         error => this.onError('Erro ao tentar remover curso'),
       )
     }
-  }
 
+    this.closeModal();
+  }
   onVincularAluno(disciplina: Disciplina) {
     this.router.navigate([disciplina.id, 'vincular-aluno'], { relativeTo: this.route })
   }
 
   onRegistrarNota(disciplina: Disciplina) {
     this.router.navigate([disciplina.id, 'registrar-nota'], { relativeTo: this.route })
+  }
+
+  openModal() {
+    this.confirmModal.nativeElement.classList.add('show');
+    this.confirmModal.nativeElement.style.display = 'block';
+  }
+
+  closeModal() {
+    this.confirmModal.nativeElement.classList.remove('show');
+    this.confirmModal.nativeElement.style.display = 'none';
   }
 
   ngOnInit(): void {
