@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { Disciplina, ListagemDisciplina } from 'src/app/interfaces/disciplina/disciplina';
 import { HttpClient } from '@angular/common/http'
 import { delay, first } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DisciplinaService {
 
-  private readonly API = 'api/disciplina'
+  private readonly API = environment.apiUrl + '/api/disciplina'
 
   constructor(private httpClient: HttpClient) { }
 

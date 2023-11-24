@@ -2,13 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { first } from 'rxjs';
 import { ListagemNotas, Notas } from 'src/app/interfaces/notas/notas';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NotasService {
 
-  private readonly API = 'api/notas'
+  private readonly API = environment.apiUrl + '/api/notas'
 
   constructor(private httpClient: HttpClient) { }
 

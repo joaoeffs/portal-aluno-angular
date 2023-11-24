@@ -3,13 +3,14 @@ import { HttpClient } from '@angular/common/http'
 import { AlunoDisciplina } from 'src/app/interfaces/aluno-disciplina/aluno-disciplina';
 import { ListagemAlunos } from 'src/app/interfaces/aluno/aluno';
 import { ListagemNotas } from 'src/app/interfaces/notas/notas';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AlunoDisciplinaService {
 
-  private readonly API = 'api/alunodisciplina'
+  private readonly API = environment.apiUrl + '/api/alunodisciplina'
 
   constructor(private httpClient: HttpClient) { }
 
