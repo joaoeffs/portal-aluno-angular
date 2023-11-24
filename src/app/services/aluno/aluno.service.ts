@@ -19,4 +19,8 @@ export class AlunoService {
       first()
     )
   }
+
+  getById() {
+    return this.httpClient.get<any>(`${this.API}/usuario`)
+  }
 }
