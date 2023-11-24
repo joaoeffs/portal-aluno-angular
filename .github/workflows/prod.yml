@@ -24,12 +24,12 @@ jobs:
         with:
           node-version: 18
 
-      - name: Install dependencies
+      - name: Install Angular CLI
+        run: npm install -g @angular/cli
+      
+      - name: Install Dependencies
         run: npm install
-
-#      - name: Run tests
-#        run: npm run test:headless
-
+      
       - name: Build
         run: ng build --prod
 
