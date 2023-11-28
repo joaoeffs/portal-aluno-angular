@@ -1,27 +1,13 @@
-# PortalAlunoAngular
+# Portal do Aluno 
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.3.
+# Contribuir com o Projeto
+Caso você queria baixar o projeto na sua máquina local e subir o mesmo, afim de contribuir para melhorias ou para estudos academicos. Siga esses passos descritos abaixo. </br>
+**Obs.:** Caso for contribuir, lembre de abrir um Pull Request para que a gente possa discutir as novas implementações.
 
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+1. Instale o Node.js e npm, você pode baixá-lo do site oficial.
+2. Verifique se eles estão instalados corretamente, utilize o comando: **node v-** e **npm-v**
+3. Instale o Angular CLI, com o comando: **npm install -g @angular/cli**
+4. Clone este repositório, comando: **git clone https://github.com/joaoeffs/portal-aluno-angular**
+5. Instale as dependências do projeto, com o comando: **npm instal**
+6. Execute o projeto com o comando: **ng serve** ou **npm run**
+7. Abre o navegador e acessa a URL: **http://localhost:4200**
