@@ -20,35 +20,34 @@ button {
 }
 
 .modal-header {
-  border-bottom: 1px solid #dee2e6; /* Uma borda sutil para o cabeçalho */
+  border-bottom: 1px solid #dee2e6;
 }
 
 .modal-title {
-  color: #495057; /* Uma cor que contrasta, mas não é muito agressiva */
+  color: #495057;
 }
 
 .modal-body {
-  padding: 20px; /* Espaçamento interno para não ter texto colado nas bordas */
+  padding: 20px;
 }
 
 .modal-footer {
-  border-top: 1px solid #dee2e6; /* Uma borda sutil para o rodapé */
+  border-top: 1px solid #dee2e6;
   padding: 20px;
 }
 
 .btn-light {
-  border: 1px solid #dee2e6; /* Adiciona uma borda aos botões para definir melhor */
+  border: 1px solid #dee2e6;
 }
 
 .btn-danger {
-  background-color: #dc3545; /* Uma cor mais forte para a ação primária */
+  background-color: #dc3545;
   border-color: #dc3545;
 }
 
-/* Responsividade */
 @media (max-width: 576px) {
   .modal-dialog {
-    max-width: 90%; /* Faz o modal ser um pouco menor nas telas pequenas */
+    max-width: 90%;
   }
 }
 
